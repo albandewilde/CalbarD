@@ -16,3 +16,5 @@ app/externalNativeBuild
 
 # vim open files
 *.swp
+
+data.json

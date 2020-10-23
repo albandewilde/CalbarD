@@ -4,3 +4,5 @@ services:
     back:
         build: "."
         ports: [8080:8080]
+        volumes:
+            - ${PWD}/data.json:/data.json
