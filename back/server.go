@@ -72,7 +72,21 @@ func pics(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, http.StatusText(405), 405)
 		return
 	}
-	fmt.Fprint(w, "Get All pictures")
+	content, err := imgs.Read()
+	if err != nil {
+		fmt.Println(err)
+		http.Error(w, "Failed to read images", 500)
+		return
+	}
+
+	jsn, err := json.Marshal(content)
+	if err != nil {
+		fmt.Println(err)
+		http.Error(w, "Failed to jsonify images", 500)
+		return
+	}
+
+	fmt.Fprint(w, string(jsn))
 }
 
 func init() {
