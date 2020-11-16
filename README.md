@@ -6,9 +6,9 @@ TP of android app
 
 ### API
 
-- /pic/
-    Route to manipulate one pictures, it support `PUT` and `DELETE` method.
-    You should provide a body. Ex:
+- /pic/  
+    Route to manipulate one pictures, it support `PUT` and `DELETE` method.  
+    You should provide a body. Ex:  
     ```json
     {
         "img": "other encoded image",
@@ -18,9 +18,9 @@ TP of android app
     }
     ```
 
-- /pics/
-    Route to get all images on the server, it only support the `GET` method.
-    It return a json like this:
+- /pics/  
+    Route to get all images on the server, it only support the `GET` method.  
+    It return a json like this:  
     ```json
     [
         {
@@ -40,5 +40,5 @@ TP of android app
 
 ### Start the back
 
-To start the backend you must have docker installed.
+To start the backend you must have docker installed.  
 Then you can use the Makefile to start the project
