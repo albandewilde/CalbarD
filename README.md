@@ -37,3 +37,8 @@ TP of android app
         }
     ]
     ```
+
+### Start the back
+
+To start the backend you must have docker installed.
+Then you can use the Makefile to start the project
