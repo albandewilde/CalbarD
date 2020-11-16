@@ -18,6 +18,10 @@ func (img *image) valid() bool {
 	return img.Img != "" || img.Name != "" || img.Taken != time.Time{} || img.Author != ""
 }
 
+func (img *image) equal(i *image) bool {
+	return img.Img == i.Img && img.Name == i.Name && img.Taken == i.Taken && img.Author == i.Author
+}
+
 type Images struct {
 	filepath string
 	mux      sync.Mutex
@@ -76,4 +80,13 @@ func (imgs *Images) Add(img image) ([]image, error) {
 	images = append(images, img)
 
 	return images, nil
+}
+
+func (imgs *Images) Remove(idx int) error {
+	images, err := imgs.Read()
+	if err != nil {
+		return err
+	}
+	images = append(images[:idx], images[idx+1:]...)
+	return imgs.Save(images)
 }
