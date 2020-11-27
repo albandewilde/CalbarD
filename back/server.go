@@ -25,6 +25,7 @@ func pic(w http.ResponseWriter, r *http.Request) {
 		b := make([]byte, r.ContentLength)
 		// Read the body (ignore returned values)
 		r.Body.Read(b)
+		fmt.Println(string(b))
 
 		// Decode the image in the json
 		var sendedImage image
@@ -43,6 +44,7 @@ func pic(w http.ResponseWriter, r *http.Request) {
 		// Add the image
 		images, err := imgs.Add(sendedImage)
 		if err != nil {
+			fmt.Println("¤¤¤")
 			fmt.Println(err)
 			http.Error(w, "Failed to add the image", 500)
 			return
@@ -56,7 +58,7 @@ func pic(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		fmt.Fprint(w, "Sucessfully saved")
+		fmt.Fprint(w, "Successfully saved")
 		return
 	} else if r.Method == "GET" { // Get request
 		fmt.Fprint(w, "Don't use get method, this is non sens")
@@ -135,9 +137,10 @@ func logRequest(h http.HandlerFunc) http.HandlerFunc {
 		// Log the request
 		fmt.Println(
 			fmt.Sprintf(
-				"%s - %s - %s %s", time.Now().Format("[2006-01-02 15:04:05]"),
+				"%s - %s - %s %s %s", time.Now().Format("[2006-01-02 15:04:05]"),
 				r.RemoteAddr,
 				r.Host,
+				r.Method,
 				r.URL,
 			),
 		)
