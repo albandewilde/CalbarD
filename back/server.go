@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"time"
 )
 
 var imgs *Images
@@ -129,14 +130,27 @@ func pics(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, string(jsn))
 }
 
+func logRequest(h http.HandlerFunc) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		// Log the request
+		fmt.Println(
+			fmt.Sprintf(
+				"%s - %s - %s %s", time.Now().Format("[2006-01-02 15:04:05]"),
+				r.RemoteAddr,
+				r.Host,
+				r.URL,
+			),
+		)
+		h(w, r)
+	}
+}
+
 func init() {
 	imgs = New("/data.json")
 }
 
 func main() {
-	http.HandleFunc("/pic", pic)
-	http.HandleFunc("/pic/", pic)
-	http.HandleFunc("/pics", pics)
-	http.HandleFunc("/pics/", pics)
+	http.HandleFunc("/pic/", logRequest(pic))
+	http.HandleFunc("/pics/", logRequest(pics))
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
