@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">CalbarD</string>
+    <string name="validate">Valider</string>
+    <string name="insert_nickname">Insérer votre pseudonyme</string>
+    <string name="pseudo_error">Veuillez insérer un pseudonyme</string>
+    <string name="title_activity_main_page">Page principale</string>
+    <string name="tab_text_1">Mes photos</string>
+    <string name="tab_text_2">Toutes les photos</string>
+    <string name="hello_world">Hello Square World!</string>
+</resources>

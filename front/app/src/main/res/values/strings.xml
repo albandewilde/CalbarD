@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">CalbarD</string>
+    <string name="validate">Validate</string>
+    <string name="insert_nickname">Insert your Nickname</string>
+    <string name="pseudo_error">Please insert a nickname</string>
+    <string name="title_activity_main_page">Main page</string>
+    <string name="tab_text_1">My Pictures</string>
+    <string name="tab_text_2">All Pictures</string>
+    <string name="hello_world">Hello Square World!</string>
+    <string name="title_activity_camera">CameraActivity</string>
+</resources>
